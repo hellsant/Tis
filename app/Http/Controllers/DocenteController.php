@@ -15,7 +15,8 @@ class DocenteController extends Controller
      */
     public function index()
     {
-       return view('DocenteIndex');
+        $user = \Tis\Docente::All();
+       return view('docente.mostrarLista', compact('user'));
     }
 
     /**
@@ -36,7 +37,7 @@ class DocenteController extends Controller
      */
     public function store(Request $request)
     {
-        docente::create([
+        \Tis\Docente::create([
             'nombre'=> $request['name'],
             'apellidoPaterno'=> $request['firstLastName'],
             'ApellidoMaterno'=> $request['secontLastName'],
